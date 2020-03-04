@@ -1,0 +1,17 @@
+<div class="row">
+	<% @user.followings.each do |user| %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>follow</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td> <%= user.name %> </td>
+				<td> <%= link_to 'show', user_path(user) %> </td>
+			</tr>
+		</tbody>
+	</table>
+	<% end %>
+</div>

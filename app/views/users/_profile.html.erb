@@ -1,0 +1,39 @@
+
+<table class="table">
+	<tr><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+
+	<tr>
+		<th>name</th>
+		<th><%= user.name %></th>
+	</tr>
+
+	<tr>
+		<th>introduction</th>
+		<th><%= user.introduction %></th>
+	</tr>
+</table>
+<!-- フォロー -->
+		<%= render 'follow_form' if user_signed_in? %>
+		<% @user ||= current_user %>
+		<div class="stats">
+			<div class= "b2" style = "margin:10px">
+			<a href="<%= following_user_path(@user) %>">
+				<strong id="following" class="stat" style = "text-decoration:none;">
+					<%= @user.followings.count %>
+				</strong>
+				following
+			</a>
+		    </div>
+		    <div class= "b2" style = "margin:10px">
+			<a href="<%= followers_user_path(@user) %>">
+				<strong id="followers" class="stat">
+					<%= @user.followers.count %>
+				</strong>
+				followers
+			</a>
+		    </div>
+		</div>
+		<!-- フォロー -->
+<div class="row">
+	<%= link_to '',edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id} b" %>
+</div>
